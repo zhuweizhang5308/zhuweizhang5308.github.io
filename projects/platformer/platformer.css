@@ -3,10 +3,10 @@ body {
 }
 
 canvas {
-  background-color: lightblue;
+  background-color: rgb(198, 224, 209);
   margin: 20px;
 }
 
 img {
-  display: none;
+  display:none;
 }
