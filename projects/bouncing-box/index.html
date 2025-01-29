@@ -6,6 +6,15 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
+	body {
+	background-image: url("img/Cyberpunk-City-Street-Scifi-Wallpaper-Graphics-74866949-1.jpg");
+ 	background-color: #cccccc;
+	 -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+	}
+
 		.box {
 			width: 70px;
 			height: 70px;
@@ -31,7 +40,6 @@
 <body class="board">
 	<!-- HTML for the box -->
 	<div class="box">?</div>
-
 	<script>
 		(function () {
 			'use strict'
@@ -44,7 +52,6 @@
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
-
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
 
@@ -66,18 +73,36 @@
 			//////////////////////////////////////////////////////////////////
 
 			// TODO 2 - Variable declarations 
-			
-
-
+			var positionX = 0;
+			var points = 0;
+			var speedX = 10;
+			var positionY = 0;
+			var speedY = 10;
+			var boardHeight = jQuery(window).height(70);
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
 			function update() {
-				moveBoxTo(300);
+				// increase positionX by 10
+				positionX = positionX +speedX;
+				positionY = positionY +speedY;
+				moveBoxTo(positionX,positionY);
 
-			};
+				if(positionX > boardWidth-73){
+					speedX = -speedX;
+				}
+				if(positionX < 0){
+					speedX = -speedX;	
+				}
+				if(positionY > boardHeight-73){
+					speedY = -speedY;
+				}
+				if(positionY < 0){
+					speedY = -speedY;	
+				}
+			}
 
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -85,8 +110,23 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-
-
+				//increase points
+				points = points + 1
+				//increase speed
+				if(speedX > 0){
+					speedX = speedX + 3;
+				}else if(speedX < 0){
+					speedX -= 3;
+				}
+				if(speedY > 0){
+					speedY = speedY+ 3;
+				}else if(speedY < 0){
+					speedY -= 3;
+				}
+				//reset the box to the left
+				positionY=0;
+				positionX=0;
+				changeBoxText(points)
 			};
 
 
