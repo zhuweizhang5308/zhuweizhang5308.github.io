@@ -60,8 +60,8 @@ var background = function (window) {
             
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
-            for (var i = 0; i < 5; ++i) {
-                var buildingColors = ["red", "blue", "Gray", "yellow", "purple"]
+            for (var i = 0; i < 10; ++i) {
+                var buildingColors = ["Gray", "white", "Gray", "white", "Gray","white", "Gray", "white", "Gray", "white"]
                 var buildingHeight = 300 * Math.random(); // assign 300 to the buildingHeight variable
                 var building = draw.rect(75, buildingHeight, buildingColors[i], "Black", 1); // draw retangle with the width of 75, a set height, a fill color of gray, border color of black and the width of the border is 1 
                 building.x = 200 * i; //  multiply 200 by the current i value and store it as the x pos for the building
@@ -73,7 +73,7 @@ var background = function (window) {
             // TODO 3: Part 1 - Add a tree
             tree = draw.bitmap("img/tree.png"); // creates a bitmap for the tree image and stores it in the variable tree
             tree.x = canvasWidth  -10; // places the tree to the right
-            tree.y = groundY - 225; // places the tree above the ground(adjested for the tree height)
+            tree.y = groundY - 230; // places the tree above the ground(adjested for the tree height)
             background.addChild(tree); // addd the tree to the background container
             
         } // end of render function - DO NOT DELETE
@@ -96,13 +96,12 @@ var background = function (window) {
             // TODO 4: Part 2 - Parallax
             
             for(var i = 0; i < buildings.length; i++){
-                var building = buildings[i];
-                building.x -= 1;
-
-                if (building.x < -100)
-                    building.x = canvasWidth;
+                var building = buildings[i]; // individual imdex of the buildings array stored in the variable building
+                building.x -= 1;  //subtract 1 from the building's x position; animate to the left
+                if (building.x < -100){ // checks if the x pos of the buidling is less than -100
+                    building.x = canvasWidth; // helps the background reset when it reaches the end of the screen
             }
-
+        }
         } // end of update function - DO NOT DELETE
         
         
