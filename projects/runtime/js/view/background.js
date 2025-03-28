@@ -61,7 +61,7 @@ var background = function (window) {
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
             for (var i = 0; i < 10; ++i) {
-                var buildingColors = ["Gray", "white", "Gray", "white", "Gray","white", "Gray", "white", "Gray", "white"]
+                var buildingColors = ["Gray", "white", "Gray", "white", "Gray","white", "Gray", "white", "Gray", "white"] // creates an array buildingColors that can determine the color of the buildings
                 var buildingHeight = 300 * Math.random(); // assign 300 to the buildingHeight variable
                 var building = draw.rect(75, buildingHeight, buildingColors[i], "Black", 1); // draw retangle with the width of 75, a set height, a fill color of gray, border color of black and the width of the border is 1 
                 building.x = 200 * i; //  multiply 200 by the current i value and store it as the x pos for the building
