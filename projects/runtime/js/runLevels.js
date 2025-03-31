@@ -30,7 +30,9 @@ var runLevels = function (window) {
       obstacleHitZone.addChild(obstacleImage); // attach the image to the obstacle hitzone
       obstacleImage.x = -25; // position the image on the hitzone's x value by moving it left 25 pixel
       obstacleImage.y = -25; // position the image on the hitzone's y value by moving it up 25 pixel  
-      obstacleHitZone.rotationalVelocity = 10;
+      //obstacleHitZone.rotationalVelocity = 10; // rotates sawblade by 10
+      obstacleImage.scaleX = .5; // X scale of image
+      obstacleImage.scaleY = .5; // Y scale of image
     }
    
 
@@ -48,7 +50,9 @@ var runLevels = function (window) {
       reward.onPlayerCollision = function () {
         game.changeIntegrity(health) // subtracts 10 helath form Halle when it touch the enemy
         reward.shrink() // reward shrink when hit
-        game.increaseScore(100)
+        //reward.fadeOut() // reward fadeOut when it is hit
+        //reward.flyTo (0,0) // reward  flys when hit
+        game.increaseScore(100) //increase score by 100 when collected
         startLevel();
       }; 
     }
@@ -69,7 +73,7 @@ var runLevels = function (window) {
       game.changeIntegrity(health) // subtracts 10 helath form Halle when it touch the enemy
     }; 
     enemy.onProjectileCollision = function(){
-      game.increaseScore(100)
+      game.increaseScore(100) //increase socre by 100 when the enemy is hit
        // increase score when it hits enemy
       //enemy.fadeOut() // enemy fadeOut when it is hit
       //enemy.shrink() // enemy shrink when hit
@@ -91,6 +95,8 @@ var runLevels = function (window) {
     level.onPlayerCollision = function () {
       game.changeIntegrity(health) // subtracts 10 helath form Halle when it touch the enemy
       level.shrink() // level shrink when hit
+      //level.fadeOut() // level fadeOut when it is hit
+      //level.flyTo (0,0) // level  flys when hit
       game.increaseScore(1000) // increases score when it collects the yellowSquare
     }; 
   }
