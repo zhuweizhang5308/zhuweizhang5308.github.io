@@ -21,9 +21,9 @@ var makeLevelData = function (window) {
 
           { type: "sawblade", x: 3000, y: groundY, hitSize: 25, damage: 10, image: "img/spikes.png"},
 
-          { type: "enemy", x: 2500, y: groundY  - 50, speed : 3, health : -10},
-          { type: "enemy", x: 3500, y: groundY  - 50, speed : 3, health : -10},
-          { type: "enemy", x: 5500, y: groundY  - 50, speed : 3, health : -10},
+          { type: "enemy", x: 2500, y: groundY-50 , speed : 3, health : -100, image: "img/Burgess.png", xScale : 0.3 , yScale : 0.3},
+          { type: "enemy", x: 3500, y: groundY-10 , speed : 3, health : -10, image: "img/Shiryu.png", xScale : .5 , yScale : .5},
+          { type: "enemy", x: 5500, y: groundY-50, speed : 3, health : -10, image: "img/Aokiji.png", xScale : 0.2 , yScale : 0.2},
 
           { type: "reward", x: 4500, y: groundY  - 50, speed : 3, health : 10},
 

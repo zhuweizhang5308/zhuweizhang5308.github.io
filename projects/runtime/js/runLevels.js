@@ -23,7 +23,7 @@ var runLevels = function (window) {
       var hitZoneSize = hitSize; // define the size of the hit zone using the assigned variable
       var damageFromObstacle = damage; // sets the damage
       var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); // create obstacles
-      obstacleHitZone.x = x; // sets the x coordinate for the obstacle
+      obstacleHitZone.x = x ; // sets the x coordinate for the obstacle
       obstacleHitZone.y = y; // sets the y coordinate for the obstacle
       game.addGameItem(obstacleHitZone); // adds the obstacle htizone to the game
       var obstacleImage = draw.bitmap(image); // draws the obstacle bitmap nad store it is obstacleImage
@@ -48,7 +48,7 @@ var runLevels = function (window) {
       game.addGameItem(reward); // add enemy to game
       reward.velocityX -= speed; // sets how fast the enemy is moving
       reward.onPlayerCollision = function () {
-        game.changeIntegrity(health) // subtracts 10 helath form Halle when it touch the enemy
+        game.changeIntegrity(health) // gives helath form Halle when it touch the enemy
         reward.shrink() // reward shrink when hit
         //reward.fadeOut() // reward fadeOut when it is hit
         //reward.flyTo (0,0) // reward  flys when hit
@@ -59,18 +59,22 @@ var runLevels = function (window) {
     
 
 
-  function createEnemy(x, y, speed, health){
-    var enemy = game.createGameItem("enemy", 25); // create enemy gmae item adn adds it to the game
-    var redSquare = draw.rect(50, 50, "red"); // creates a red square and stores it to the var redSquare
-    redSquare.x = -25; // sets the hitzone of the image bt -25 pixels
-    redSquare.y = -25; // sets the hitzone of the image bt -25 pixels
-    enemy.addChild(redSquare); // add redSquare as the child of the enemy code
+  function createEnemy(x, y, speed, health, image, xScale, yScale){
+    var enemy = game.createGameItem("enemy", 25); // create enemy game item and adds it to the game
+    //var redSquare = draw.rect(50, 50, "red"); // creates a red square and stores it to the var redSquare
+    var enemyImage = draw.bitmap(image);
+    enemyImage.x = -75; // sets the hitzone of the image bt -25 pixels
+    enemyImage.y = -150; // sets the hitzone of the image bt -25 pixels
+    //enemy.addChild(redSquare); // add redSquare as the child of the enemy code
+    enemy.addChild(enemyImage);
     enemy.x = x; // sets the x pos of the enemy
     enemy.y = y; // sets the y pos of the enemy
+    enemyImage.scaleX = xScale;
+    enemyImage.scaleY = yScale;
     game.addGameItem(enemy); // add enemy to game
     enemy.velocityX -= speed; // sets how fast the enemy is moving
     enemy.onPlayerCollision = function () {
-      game.changeIntegrity(health) // subtracts 10 helath form Halle when it touch the enemy
+    game.changeIntegrity(health) // subtracts health from Halle when it touch the enemy
     }; 
     enemy.onProjectileCollision = function(){
       game.increaseScore(100) //increase socre by 100 when the enemy is hit
@@ -78,7 +82,9 @@ var runLevels = function (window) {
       //enemy.fadeOut() // enemy fadeOut when it is hit
       //enemy.shrink() // enemy shrink when hit
       enemy.flyTo (0,0) // enemy  flys when hit
+    
     }
+    
   }
    
 
@@ -116,7 +122,7 @@ var runLevels = function (window) {
           createObstacles(element.x, element.y, element.hitSize, element.damage, element.image); // if the conditon is true, it will run the elements
         }
         if(element.type === "enemy"){ // checks the type key:value of the gameItem objects to determine which object to manifest
-          createEnemy(element.x, element.y, element.speed, element.health); // if the conditon is true, it will run the elements
+          createEnemy(element.x, element.y, element.speed, element.health, element.image, element.xScale, element.yScale); // if the conditon is true, it will run the elements
         }
         if(element.type === "reward"){ // checks the type key:value of the gameItem objects to determine which object to manifest
           createReward(element.x, element.y, element.speed, element.health); // if the conditon is true, it will run the elements
