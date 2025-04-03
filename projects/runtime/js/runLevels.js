@@ -37,18 +37,24 @@ var runLevels = function (window) {
    
 
 
-    function createReward(x, y, speed, health){
+    function createReward(x, y, speed, health, image){
       var reward = game.createGameItem("reward", 25); // create reward game item adn adds it to the game
-      var blueSquare = draw.rect(50, 50, "blue"); // creates a blue square and stores it to the var blueSquare
-      blueSquare.x = -25; // sets the hitzone of the image bt -25 pixels
-      blueSquare.y = -25; // sets the hitzone of the image bt -25 pixels
-      reward.addChild(blueSquare); // add blueSquare as the child of the enemy code
-      reward.x = x; // sets the x pos of the enemy
-      reward.y = y; // sets the y pos of the enemy
+      var rewardImage = draw.bitmap(image);
+      //var blueSquare = draw.rect(50, 50, "blue"); // creates a blue square and stores it to the var blueSquare
+      rewardImage.x = -25; // sets the x pos of the reward
+      rewardImage.y = -25;// sets the y pos of the reward
+      //blueSquare.x = -25; // sets the hitzone of the image bt -25 pixels
+      //blueSquare.y = -25; // sets the hitzone of the image bt -25 pixels
+      reward.addChild(rewardImage);
+      //reward.addChild(blueSquare); // add blueSquare as the child of the reward code
+      reward.x = x; // sets the x pos of the reward
+      reward.y = y; // sets the y pos of the reward
+      rewardImage.scaleX = .1;
+      rewardImage.scaleY = .1;
       game.addGameItem(reward); // add enemy to game
-      reward.velocityX -= speed; // sets how fast the enemy is moving
+      reward.velocityX -= speed; // sets how fast the reward is moving
       reward.onPlayerCollision = function () {
-        game.changeIntegrity(health) // gives helath form Halle when it touch the enemy
+        game.changeIntegrity(health) // gives health to Halle when it touch the reward
         reward.shrink() // reward shrink when hit
         //reward.fadeOut() // reward fadeOut when it is hit
         //reward.flyTo (0,0) // reward  flys when hit
@@ -59,7 +65,7 @@ var runLevels = function (window) {
     
 
 
-  function createEnemy(x, y, speed, health, image, xScale, yScale){
+  function createEnemy(x, y, speed, health, image, xScale, yScale, score){
     var enemy = game.createGameItem("enemy", 25); // create enemy game item and adds it to the game
     //var redSquare = draw.rect(50, 50, "red"); // creates a red square and stores it to the var redSquare
     var enemyImage = draw.bitmap(image);
@@ -77,7 +83,7 @@ var runLevels = function (window) {
     game.changeIntegrity(health) // subtracts health from Halle when it touch the enemy
     }; 
     enemy.onProjectileCollision = function(){
-      game.increaseScore(100) //increase socre by 100 when the enemy is hit
+      game.increaseScore(score) //increase socre by 100 when the enemy is hit
        // increase score when it hits enemy
       //enemy.fadeOut() // enemy fadeOut when it is hit
       //enemy.shrink() // enemy shrink when hit
@@ -122,10 +128,10 @@ var runLevels = function (window) {
           createObstacles(element.x, element.y, element.hitSize, element.damage, element.image); // if the conditon is true, it will run the elements
         }
         if(element.type === "enemy"){ // checks the type key:value of the gameItem objects to determine which object to manifest
-          createEnemy(element.x, element.y, element.speed, element.health, element.image, element.xScale, element.yScale); // if the conditon is true, it will run the elements
+          createEnemy(element.x, element.y, element.speed, element.health, element.image, element.xScale, element.yScale, element.score); // if the conditon is true, it will run the elements
         }
         if(element.type === "reward"){ // checks the type key:value of the gameItem objects to determine which object to manifest
-          createReward(element.x, element.y, element.speed, element.health); // if the conditon is true, it will run the elements
+          createReward(element.x, element.y, element.speed, element.health, element.image); // if the conditon is true, it will run the elements
         }
         if(element.type === "level"){ // checks the type key:value of the gameItem objects to determine which object to manifest
           createLevel(element.x, element.y, element.speed, element.health); // if the conditon is true, it will run the elements

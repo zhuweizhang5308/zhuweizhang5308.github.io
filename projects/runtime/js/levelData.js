@@ -21,13 +21,15 @@ var makeLevelData = function (window) {
 
           { type: "sawblade", x: 3000, y: groundY, hitSize: 25, damage: 10, image: "img/spikes.png"},
 
-          { type: "enemy", x: 2500, y: groundY-50 , speed : 3, health : -100, image: "img/Burgess.png", xScale : 0.3 , yScale : 0.3},
-          { type: "enemy", x: 3500, y: groundY-10 , speed : 3, health : -10, image: "img/Shiryu.png", xScale : .5 , yScale : .5},
-          { type: "enemy", x: 5500, y: groundY-50, speed : 3, health : -10, image: "img/Aokiji.png", xScale : 0.2 , yScale : 0.2},
+          { type: "enemy", x: 2500, y: groundY-50 , speed: 3, health: -100, image: "img/Burgess.png", xScale: 0.3 , yScale: 0.3, score: 100},
+          { type: "enemy", x: 3500, y: groundY-50 , speed: 3, health: -10, image: "img/Shiryu.png", xScale: .5 , yScale: .5, score: 300},
+          { type: "enemy", x: 5500, y: groundY-50, speed: 3, health: -50, image: "img/Aokiji.png", xScale: 0.2 , yScale: 0.2, score: 500},
+          { type: "enemy", x: 7000, y: groundY-50, speed: 3, health: -100, image: "img/blackbeard.png", xScale: 0.3 , yScale: 0.3, score: 1000},
 
-          { type: "reward", x: 4500, y: groundY  - 50, speed : 3, health : 10},
+          { type: "reward", x: 8000, y: groundY  - 50, speed: 3, health: 10, image: "img/treasure.png"},
+          { type: "reward", x: 6000, y: groundY  - 50, speed: 3, health: 10, image: "img/treasure.png"},
 
-          { type: "level", x: 6500, y: groundY  - 50, speed : 3, health : 100},
+          { type: "level", x: 8000, y: groundY  - 50, speed : 3, health : 100},
         ],
       },
       {
