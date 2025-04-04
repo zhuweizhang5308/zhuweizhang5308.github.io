@@ -29,7 +29,7 @@ var makeLevelData = function (window) {
           { type: "reward", x: 8000, y: groundY  - 50, speed: 3, health: 10, image: "img/treasure.png"},
           { type: "reward", x: 6000, y: groundY  - 50, speed: 3, health: 10, image: "img/treasure.png"},
 
-          { type: "level", x: 8500, y: groundY  - 50, speed : 3, health : 100, image: "img/compass.png"},
+          { type: "level", x: 9000, y: groundY  - 50, speed : 3, health : 100, image: "img/compass.png", xScale: 0.1 , yScale: 0.1},
         ],
       },
       {

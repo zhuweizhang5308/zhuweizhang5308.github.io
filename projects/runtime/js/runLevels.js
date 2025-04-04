@@ -94,18 +94,18 @@ var runLevels = function (window) {
   }
    
 
-  function createLevel(x, y, speed, health, image){
+  function createLevel(x, y, speed, health, image, xScale, yScale){
     var level = game.createGameItem("Level", 25); // create level game item and adds it to the game
     //var yellowSquare = draw.rect(50, 50, "yellow"); // creates a yellow square and stores it to the var yellowSquare
     var levelImage = draw.bitmap(image);
-    levelImage.x = -25;
-    levelImage.y = -25;
+    levelImage.x = -300;
+    levelImage.y = -300;
     //yellowSquare.x = -25; // sets the hitzone of the image bt -25 pixels
     //yellowSquare.y = -25; // sets the hitzone of the image bt -25 pixels
     //level.addChild(yellowSquare); // add yellowSquare as the child of the enemy code
     level.addChild(levelImage);
-    level.x = x; // sets the x pos of the enemy
-    level.y = y; // sets the y pos of the enemy
+    level.x = x; // sets the x pos of the level reward
+    level.y = y; // sets the y pos of the level reward
     game.addGameItem(level); // add enemy to game
     level.velocityX -= speed; // sets how fast the enemy is moving
     level.onPlayerCollision = function () {
@@ -113,9 +113,9 @@ var runLevels = function (window) {
       level.shrink() // level shrink when hit
       //level.fadeOut() // level fadeOut when it is hit
       //level.flyTo (0,0) // level  flys when hit
-      game.increaseScore(1000) // increases score when it collects the yellowSquare
-      levelImage.scaleX = .1;
-      levelImage.scaleY = .1;
+      game.increaseScore(3000) // increases score when it collects the yellowSquare
+      levelImage.scaleX = xScale;
+      levelImage.scaleY = yScale;
     }; 
   }
    
@@ -137,10 +137,10 @@ var runLevels = function (window) {
           createEnemy(element.x, element.y, element.speed, element.health, element.image, element.xScale, element.yScale, element.score); // if the conditon is true, it will run the elements
         }
         if(element.type === "reward"){ // checks the type key:value of the gameItem objects to determine which object to manifest
-          createReward(element.x, element.y, element.speed, element.health, element.image); // if the conditon is true, it will run the elements
+          createReward(element.x, element.y, element.speed, element.health, element.image,); // if the conditon is true, it will run the elements
         }
         if(element.type === "level"){ // checks the type key:value of the gameItem objects to determine which object to manifest
-          createLevel(element.x, element.y, element.speed, element.health, element.image); // if the conditon is true, it will run the elements
+          createLevel(element.x, element.y, element.speed, element.health, element.image, element.xScale, element.yScale); // if the conditon is true, it will run the elements
         }
 
 
