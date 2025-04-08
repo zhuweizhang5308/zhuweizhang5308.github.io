@@ -19,12 +19,13 @@ var runLevels = function (window) {
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
 
-    function createObstacles(x, y, hitSize, damage, image){
+    function createObstacles(x, y, hitSize, damage, image, speed){
       var hitZoneSize = hitSize; // define the size of the hit zone using the assigned variable
       var damageFromObstacle = damage; // sets the damage
       var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); // create obstacles
       obstacleHitZone.x = x ; // sets the x coordinate for the obstacle
       obstacleHitZone.y = y; // sets the y coordinate for the obstacle
+      obstacleHitZone.velocityX -= speed;
       game.addGameItem(obstacleHitZone); // adds the obstacle htizone to the game
       var obstacleImage = draw.bitmap(image); // draws the obstacle bitmap nad store it is obstacleImage
       obstacleHitZone.addChild(obstacleImage); // attach the image to the obstacle hitzone
@@ -58,7 +59,7 @@ var runLevels = function (window) {
         reward.shrink() // reward shrink when hit
         //reward.fadeOut() // reward fadeOut when it is hit
         //reward.flyTo (0,0) // reward  flys when hit
-        game.increaseScore(100) //increase score by 100 when collected
+        game.increaseScore(200) //increase score by 100 when collected
         startLevel();
       }; 
     }
@@ -131,7 +132,7 @@ var runLevels = function (window) {
         var element = levelObjects[i]; // set element to levelObject loop
 
         if(element.type === "sawblade"){ // checks the type key:value of the gameItem objects to determine which object to manifest
-          createObstacles(element.x, element.y, element.hitSize, element.damage, element.image); // if the conditon is true, it will run the elements
+          createObstacles(element.x, element.y, element.hitSize, element.damage, element.image, element.speed); // if the conditon is true, it will run the elements
         }
         if(element.type === "enemy"){ // checks the type key:value of the gameItem objects to determine which object to manifest
           createEnemy(element.x, element.y, element.speed, element.health, element.image, element.xScale, element.yScale, element.score); // if the conditon is true, it will run the elements
