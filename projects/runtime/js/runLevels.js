@@ -19,7 +19,7 @@ var runLevels = function (window) {
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
 
-    function createObstacles(x, y, hitSize, damage, image, speed){
+    function createObstacles(x, y, xScale, yScale, posX, posY, hitSize, damage, image, speed, rotation){
       var hitZoneSize = hitSize; // define the size of the hit zone using the assigned variable
       var damageFromObstacle = damage; // sets the damage
       var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); // create obstacles
@@ -29,11 +29,11 @@ var runLevels = function (window) {
       game.addGameItem(obstacleHitZone); // adds the obstacle htizone to the game
       var obstacleImage = draw.bitmap(image); // draws the obstacle bitmap nad store it is obstacleImage
       obstacleHitZone.addChild(obstacleImage); // attach the image to the obstacle hitzone
-      obstacleImage.x = -25; // position the image on the hitzone's x value by moving it left 25 pixel
-      obstacleImage.y = -25; // position the image on the hitzone's y value by moving it up 25 pixel  
-      //obstacleHitZone.rotationalVelocity = 10; // rotates sawblade by 10
-      obstacleImage.scaleX = .5; // X scale of image
-      obstacleImage.scaleY = .5; // Y scale of image
+      obstacleImage.x = posX; // position the image on the hitzone's x value by moving it left 25 pixel
+      obstacleImage.y = posY; // position the image on the hitzone's y value by moving it up 25 pixel  
+      obstacleHitZone.rotationalVelocity = rotation; // rotates obstacle
+      obstacleImage.scaleX = xScale; // X scale of image
+      obstacleImage.scaleY = yScale; // Y scale of image
     }
    
 
@@ -43,7 +43,7 @@ var runLevels = function (window) {
       var rewardImage = draw.bitmap(image);
       //var blueSquare = draw.rect(50, 50, "blue"); // creates a blue square and stores it to the var blueSquare
       rewardImage.x = -25; // sets the x pos of the reward
-      rewardImage.y = -25;// sets the y pos of the reward
+      rewardImage.y = 30;// sets the y pos of the reward
       //blueSquare.x = -25; // sets the hitzone of the image bt -25 pixels
       //blueSquare.y = -25; // sets the hitzone of the image bt -25 pixels
       reward.addChild(rewardImage);
@@ -132,7 +132,7 @@ var runLevels = function (window) {
         var element = levelObjects[i]; // set element to levelObject loop
 
         if(element.type === "sawblade"){ // checks the type key:value of the gameItem objects to determine which object to manifest
-          createObstacles(element.x, element.y, element.hitSize, element.damage, element.image, element.speed); // if the conditon is true, it will run the elements
+          createObstacles(element.x, element.y, element.xScale, element.yScale, element.posX, element.posY, element.hitSize, element.damage, element.image, element.speed, element.rotation); // if the conditon is true, it will run the elements
         }
         if(element.type === "enemy"){ // checks the type key:value of the gameItem objects to determine which object to manifest
           createEnemy(element.x, element.y, element.speed, element.health, element.image, element.xScale, element.yScale, element.score); // if the conditon is true, it will run the elements
