@@ -54,13 +54,19 @@ var background = function (window) {
                 background.addChild(circle); // adds the star to the background container
             }
             
-             var moon = draw.bitmap("img/moon.png"); // creates a bit map object using the moon image and stores it in the variable
+              var moon = draw.bitmap("img/moon.png"); // creates a bit map object using the moon image and stores it in the variable
             moon.x = canvasWidth-450; //sets x position
             moon.y = groundY-400; //sets y position
             moon.scaleX = .7; // scales the moon's width
             moon.scaleY = .7; // scales the moon's length
-            background.addChild(moon); // add the moon to the background container
             */
+
+            var sun = draw.bitmap("img/sun.png"); // creates a bit map object using the sun image and stores it in the variable
+            sun.x = canvasWidth-450; //sets x position
+            sun.y = groundY-400; //sets y position
+            sun.scaleX = .7; // scales the sun's width
+            sun.scaleY = .7; // scales the sun's length
+
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
             for (var i = 0; i < 10; ++i) {
