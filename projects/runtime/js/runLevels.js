@@ -25,7 +25,7 @@ var runLevels = function (window) {
       var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); // create obstacles
       obstacleHitZone.x = x ; // sets the x coordinate for the obstacle
       obstacleHitZone.y = y; // sets the y coordinate for the obstacle
-      obstacleHitZone.velocityX -= speed;
+      obstacleHitZone.velocityX -= speed; // sets the speed the obstacle is coming at
       game.addGameItem(obstacleHitZone); // adds the obstacle htizone to the game
       var obstacleImage = draw.bitmap(image); // draws the obstacle bitmap nad store it is obstacleImage
       obstacleHitZone.addChild(obstacleImage); // attach the image to the obstacle hitzone
@@ -40,25 +40,25 @@ var runLevels = function (window) {
 
     function createReward(x, y, xPos, yPos, xScale, yScale, speed, health, image, score){
       var reward = game.createGameItem("reward", 25); // create reward game item adn adds it to the game
-      var rewardImage = draw.bitmap(image);
+      var rewardImage = draw.bitmap(image);//creates a bitmap of an image for the reward
       //var blueSquare = draw.rect(50, 50, "blue"); // creates a blue square and stores it to the var blueSquare
       rewardImage.x = xPos; // sets the x pos of the reward
       rewardImage.y = yPos;// sets the y pos of the reward
       //blueSquare.x = -25; // sets the hitzone of the image bt -25 pixels
       //blueSquare.y = -25; // sets the hitzone of the image bt -25 pixels
-      reward.addChild(rewardImage);
+      reward.addChild(rewardImage); // add rewardImage as the child of the reward code
       //reward.addChild(blueSquare); // add blueSquare as the child of the reward code
       reward.x = x; // sets the x pos of the reward
       reward.y = y; // sets the y pos of the reward
-      rewardImage.scaleX = xScale;
-      rewardImage.scaleY = yScale;
-      game.addGameItem(reward); // add enemy to game
+      rewardImage.scaleX = xScale; //scales the length of the image of the reward 
+      rewardImage.scaleY = yScale; //scales the width of the image of the reward
+      game.addGameItem(reward); // add reward to game
       reward.velocityX -= speed; // sets how fast the reward is moving
       reward.onPlayerCollision = function () {
         game.changeIntegrity(health) // gives health to Halle when it touch the reward
-        reward.shrink() // reward shrink when hit
-        //reward.fadeOut() // reward fadeOut when it is hit
-        //reward.flyTo (0,0) // reward  flys when hit
+        reward.shrink() // reward shrink when collect
+        //reward.fadeOut() // reward fadeOut when it is collect
+        //reward.flyTo (0,0) // reward  flys when collect
         game.increaseScore(score) //increase score when collected
         startLevel();
       }; 
@@ -69,15 +69,15 @@ var runLevels = function (window) {
   function createEnemy(x, y, speed, health, image, xScale, yScale, score){
     var enemy = game.createGameItem("enemy", 25); // create enemy game item and adds it to the game
     //var redSquare = draw.rect(50, 50, "red"); // creates a red square and stores it to the var redSquare
-    var enemyImage = draw.bitmap(image);
+    var enemyImage = draw.bitmap(image); // draws the image for enemy
     enemyImage.x = -75; // sets the hitzone of the image bt -25 pixels
     enemyImage.y = -150; // sets the hitzone of the image bt -25 pixels
     //enemy.addChild(redSquare); // add redSquare as the child of the enemy code
-    enemy.addChild(enemyImage);
+    enemy.addChild(enemyImage); // add enemyImage as the child of the enemy code
     enemy.x = x; // sets the x pos of the enemy
     enemy.y = y; // sets the y pos of the enemy
-    enemyImage.scaleX = xScale;
-    enemyImage.scaleY = yScale;
+    enemyImage.scaleX = xScale;//scales the length of the image of the enemy 
+    enemyImage.scaleY = yScale;//scales the width of the image of the enemy 
     game.addGameItem(enemy); // add enemy to game
     enemy.velocityX -= speed; // sets how fast the enemy is moving
     enemy.onPlayerCollision = function () {
@@ -98,13 +98,13 @@ var runLevels = function (window) {
   function createLevel(x, y, speed, health, image, xScale, yScale){
     var level = game.createGameItem("Level", 25); // create level game item and adds it to the game
     //var yellowSquare = draw.rect(50, 50, "yellow"); // creates a yellow square and stores it to the var yellowSquare
-    var levelImage = draw.bitmap(image);
-    levelImage.x = -300;
-    levelImage.y = -300;
+    var levelImage = draw.bitmap(image); // draws image of the item for level
+    levelImage.x = -300; //x pos for level item
+    levelImage.y = -300; // y pos for level item
     //yellowSquare.x = -25; // sets the hitzone of the image bt -25 pixels
     //yellowSquare.y = -25; // sets the hitzone of the image bt -25 pixels
     //level.addChild(yellowSquare); // add yellowSquare as the child of the enemy code
-    level.addChild(levelImage);
+    level.addChild(levelImage);//add levelImage as the child of the enemy code
     level.x = x; // sets the x pos of the level reward
     level.y = y; // sets the y pos of the level reward
     game.addGameItem(level); // add enemy to game
@@ -115,8 +115,8 @@ var runLevels = function (window) {
       //level.fadeOut() // level fadeOut when it is hit
       //level.flyTo (0,0) // level  flys when hit
       game.increaseScore(3000) // increases score when it collects the yellowSquare
-      levelImage.scaleX = xScale;
-      levelImage.scaleY = yScale;
+      levelImage.scaleX = xScale; // sets the X scale fo level item
+      levelImage.scaleY = yScale;// sets the Y scale fo level item
     }; 
   }
    
@@ -138,7 +138,7 @@ var runLevels = function (window) {
           createEnemy(element.x, element.y, element.speed, element.health, element.image, element.xScale, element.yScale, element.score); // if the conditon is true, it will run the elements
         }
         if(element.type === "reward"){ // checks the type key:value of the gameItem objects to determine which object to manifest
-          createReward(element.x, element.y, element.Xpos, element.Ypos,  element.xScale, element.yScale, element.speed, element.health, element.image, element.score); // if the conditon is true, it will run the elements
+          createReward(element.x, element.y, element.xPos, element.yPos, element.xScale, element.yScale, element.speed, element.health, element.image, element.score); // if the conditon is true, it will run the elements
         }
         if(element.type === "level"){ // checks the type key:value of the gameItem objects to determine which object to manifest
           createLevel(element.x, element.y, element.speed, element.health, element.image, element.xScale, element.yScale); // if the conditon is true, it will run the elements

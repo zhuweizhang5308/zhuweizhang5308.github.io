@@ -46,13 +46,13 @@ var makeLevelData = function (window) {
           { type: "enemy", x: 7500, y: groundY-50, speed: 3, health: -100, image: "img/Aokiji.png", xScale: 0.2 , yScale: 0.2, score: 500},
           { type: "enemy", x: 9000, y: groundY-50, speed: 3, health: -100, image: "img/blackbeard.png", xScale: 0.3 , yScale: 0.3, score: 1000},
 
-          { type: "reward", x: 500, y: groundY - 100, xPos:-25, yPos: -30, xScale: 0.1, yScale: 0.1, speed: 3, health: 10, image: "img/coins.png", score: 100},
-          { type: "reward", x: 6000, y: groundY - 100, xPos:-25, yPos: -30, xScale: 0.1, yScale: 0.1, speed: 3, health: 10, image: "img/coins.png", score: 100},
-          { type: "reward", x: 8200, y: groundY - 100, xPos:-25, yPos: -30, xScale: 0.1, yScale: 0.1,  speed: 3, health: 10, image: "img/treasure.png", score: 200},
-          { type: "reward", x: 9000, y: groundY - 100, xPos:-25, yPos: -30, xScale: 0.1, yScale: 0.1,  speed: 3, health: 10, image: "img/treasure.png", score: 200},
-          { type: "reward", x: 7000, y: groundY - 100, xPos:-25, yPos: -30, xScale: 0.1, yScale: 0.1,  speed: 3, health: 10, image: "img/treasure.png", score: 200},
-          { type: "reward", x: 6500, y: groundY - 100, xPos:-25, yPos: -30, xScale: 0.1, yScale: 0.1,  speed: 3, health: 10, image: "img/treasure.png", score: 200},
-          { type: "reward", x: 2500, y: groundY - 100, xPos:-25, yPos: -30, xScale: 0.1, yScale: 0.1, speed: 3, health: 10, image: "img/treasure.png", score: 200},
+          { type: "reward", x: 500, y: groundY - 100, xPos:-60, yPos: -30, xScale: 0.1, yScale: 0.1, speed: 3, health: 10, image: "img/coins.png", score: 100},
+          { type: "reward", x: 6000, y: groundY - 100, xPos:-60, yPos: -30, xScale: 0.1, yScale: 0.1, speed: 3, health: 10, image: "img/coins.png", score: 100},
+          { type: "reward", x: 8200, y: groundY - 100, xPos:-25, yPos: 20, xScale: 0.1, yScale: 0.1,  speed: 3, health: 10, image: "img/treasure.png", score: 200},
+          { type: "reward", x: 9000, y: groundY - 100, xPos:-25, yPos: 20, xScale: 0.1, yScale: 0.1,  speed: 3, health: 10, image: "img/treasure.png", score: 200},
+          { type: "reward", x: 7000, y: groundY - 100, xPos:-25, yPos: 20, xScale: 0.1, yScale: 0.1,  speed: 3, health: 10, image: "img/treasure.png", score: 200},
+          { type: "reward", x: 6500, y: groundY - 100, xPos:-25, yPos: 20, xScale: 0.1, yScale: 0.1,  speed: 3, health: 10, image: "img/treasure.png", score: 200},
+          { type: "reward", x: 2500, y: groundY - 100, xPos:-25, yPos: 20, xScale: 0.1, yScale: 0.1, speed: 3, health: 10, image: "img/treasure.png", score: 200},
 
           { type: "level", x: 10000, y: groundY  - 100, speed : 3, health : 100, image: "img/compass.png", xScale: 0.01 , yScale: 0.01},
         ],
@@ -62,9 +62,9 @@ var makeLevelData = function (window) {
         number: 2,
         speed: -3,
         gameItems: [
-          { type: "sawblade", x: 1000, y: groundY },
-          { type: "sawblade", x: 2000, y: groundY - 100 },
-          { type: "sawblade", x: 3000, y: groundY },
+          { type: "sawblade", x: 12000, y: groundY, xScale: .5, yScale: .5, posX: -25,posY: -25, hitSize: 25, damage: 10, image: "img/spikes.png", speed : 1},
+          { type: "sawblade", x: 13000, y: groundY, xScale: .5, yScale: .5, posX: -25,posY: -25, hitSize: 25, damage: 10, image: "img/spikes.png", speed : 1},
+          { type: "sawblade", x: 14000, y: groundY, xScale: .5, yScale: .5, posX: -25,posY: -25, hitSize: 25, damage: 10, image: "img/spikes.png", speed : 1},
         ],
       },
     ];
