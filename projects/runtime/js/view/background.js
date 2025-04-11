@@ -63,9 +63,10 @@ var background = function (window) {
 
             var sun = draw.bitmap("img/sun.png"); // creates a bit map object using the sun image and stores it in the variable
             sun.x = canvasWidth-450; //sets x position
-            sun.y = groundY-400; //sets y position
-            sun.scaleX = .7; // scales the sun's width
-            sun.scaleY = .7; // scales the sun's length
+            sun.y = groundY - 800; //sets y position
+            sun.scaleX = 0.4; // scales the sun's width
+            sun.scaleY = 0.4; // scales the sun's length
+            background.addChild(sun) //add sun as the child of background
 
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
